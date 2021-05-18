@@ -15,7 +15,7 @@ class CsvReport(private val projects: List<Project>) : Report {
 
   override fun fullReport(): String {
     val projectInfoList = arrayListOf<String>()
-    projectInfoList.add(COLUMNS)
+    // projectInfoList.add(COLUMNS)
 
     projects.map { project ->
       val projectInfo = arrayListOf<String?>().apply {
@@ -23,28 +23,31 @@ class CsvReport(private val projects: List<Project>) : Report {
         addCsvString(project.name)
 
         // Project Description
-        addCsvString(project.description)
+        // addCsvString(project.description)
 
         // Project Version
-        addCsvString(project.version)
+        addCsvString(" (${project.version})")
 
         // Project Developers
-        addCsvList(project.developers) { it.name }
+        // addCsvList(project.developers) { it.name }
 
         // Project Url
-        addCsvString(project.url)
+        // addCsvString(project.url)
 
         // Project Year
-        addCsvString(project.year)
+        // addCsvString(project.year)
 
         // Project License Names
+        addCsvString(" --- ")
         addCsvList(project.licenses) { it.name }
 
         // Project License Url
+        addCsvString(" (")
         addCsvList(project.licenses) { it.url }
+        addCsvString(") ")
 
         // Project Dependency
-        addCsvString(project.gav)
+        // addCsvString(project.gav)
       }
 
       // Add each row to the list
@@ -58,7 +61,7 @@ class CsvReport(private val projects: List<Project>) : Report {
   override fun emptyReport(): String = EMPTY_CSV
 
   /** Convert list of elements to comma separated list. */
-  private fun ArrayList<String?>.toCsv(): String = this.joinToString(separator = ",")
+  private fun ArrayList<String?>.toCsv(): String = this.joinToString(separator = "")
 
   /** Add elements to Csv. */
   private fun ArrayList<String?>.addCsvString(element: String): Boolean {

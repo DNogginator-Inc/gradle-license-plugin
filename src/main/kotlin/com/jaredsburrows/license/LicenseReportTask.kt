@@ -484,7 +484,8 @@ open class LicenseReportTask : DefaultTask() { // tasks can't be final
     private const val APACHE_LICENSE_NAME = "The Apache Software License"
     private const val APACHE_LICENSE_URL = "http://www.apache.org/licenses/LICENSE-2.0.txt"
     private const val OPEN_SOURCE_LICENSES = "open_source_licenses"
-    const val CSV_EXT = ".csv"
+    // const val CSV_EXT = ".csv"
+    const val CSV_EXT = ".txt"
     const val HTML_EXT = ".html"
     const val JSON_EXT = ".json"
   }
